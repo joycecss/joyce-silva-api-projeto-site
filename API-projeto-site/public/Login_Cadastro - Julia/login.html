@@ -65,23 +65,23 @@
                     </ul>
                 </div><!-- social media -->
                 <p class="description description-second">ou use seu email para entrar:</p>
-                <form class="form">
+                <form id="form_cadastro" class="form" method="post" onsubmit="return cadastrar()">
+                    <!-- action="/usuarios/cadastrar" -->
                     <label class="label-input" for="">
                         <i class="far fa-user icon-modify"></i>
-                        <input type="text" placeholder="nome" name="nome" required>
+                        <input type="text" placeholder="Nome" name="nome" required>
                     </label>
                     
                     <label class="label-input" for="">
                         <i class="far fa-envelope icon-modify"></i>
-                        <input type="email" placeholder="login" name="login" required>
+                        <input type="text" placeholder="Login" name="login" required>
                     </label>
                     
                     <label class="label-input" for="">
                         <i class="fas fa-lock icon-modify"></i>
-                        <input type="password" placeholder="senha" name="senha" required>
-                    </label>
-                    
-                    <button class="btn btn-second" onclick="cadastrar()">sign up</button>        
+                        <input type="password" placeholder="Senha" name="senha" required>
+                    </label>    
+                    <input type="submit" id="btn_entrar" value="Cadastrar" class="btn-green">    
                 </form>
             </div><!-- second column -->
         </div><!-- first content -->
@@ -115,7 +115,8 @@
                     </ul>
                 </div><!-- social media -->
                 <p class="description description-second">ou use seu user:</p>
-                <form class="form">
+                <form id="form_login" method="post" action="login.html" onsubmit="return entrar()">
+                    <form class="form" >
                 
                     <label class="label-input" for="">
                         <i class="far fa-envelope icon-modify"></i>
@@ -128,10 +129,12 @@
                     </label>
                 
                     <a class="password" href="#">esqueceu sua senha?</a>
-                  <button class="btn btn-second" onclick="entrar()">sign in</button>
+                  <!-- <button class="btn btn-second" onclick="entrar()">sign in</button> -->
+                  <button id="btn_entrar" class="btn-green">Entrar</button>
+                  
                 </form>
                 
-            </div><!-- second column -->
+            </div><!-- second column --> 2144
         </div><!-- second-content -->
     </div>
     <!-- <script src="js/development.js"></script> direcionando o script -->
@@ -155,7 +158,7 @@ function entrar() {
                 sessionStorage.login_usuario_meuapp = json.login;
                 sessionStorage.nome_usuario_meuapp = json.nome;
 
-                window.location.href = '..Index.html';
+                window.location.href = 'login.html';
             });
 
         } else {
@@ -184,6 +187,7 @@ function finalizar_aguardar(resposta) {
     div_erro.style.visibility = 'visible';
     div_erro.innerHTML = resposta;
 }
+
 function cadastrar() {
         aguardar();
         var formulario = new URLSearchParams(new FormData(form_cadastro));
@@ -220,17 +224,18 @@ function cadastrar() {
         img_aguarde.style.display='none';
         div_erro.style.display='block';
     }
+
     var btnSignin = document.querySelector("#signin");
-var btnSignup = document.querySelector("#signup");
+    var btnSignup = document.querySelector("#signup");
 
-var body = document.querySelector("body");
+    var body = document.querySelector("body");
 
 
-btnSignin.addEventListener("click", function () {
-   body.className = "sign-in-js"; 
+    btnSignin.addEventListener("click", function () {
+    body.className = "sign-in-js"; 
 });
 
-btnSignup.addEventListener("click", function () {
+    btnSignup.addEventListener("click", function () {
     body.className = "sign-up-js";
 })
 </script>
