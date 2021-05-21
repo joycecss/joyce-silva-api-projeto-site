@@ -5,12 +5,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//importanto as funcionalidades do usuario (armazena valores)
 var indexRouter = require('./routes/index');
-var usuariosRouter = require('./routes/usuarios');
+var usuariosRouter = require('./routes/usuarios'); 
 var leiturasRouter = require('./routes/leituras');
 
 var app = express();
 
+// use essas funcionalidades
 app.use(logger('dev')); 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
